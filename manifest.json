@@ -1,0 +1,99 @@
+{
+  "manifest_version": 3,
+  "name": "Resume Match Scout",
+  "version": "0.1.0",
+  "description": "Extract job skills from supported job boards and compare them locally against your resume PDFs.",
+  "minimum_chrome_version": "117",
+  "permissions": [
+    "storage",
+    "windows"
+  ],
+  "host_permissions": [
+    "https://dice.com/*",
+    "https://eures.europa.eu/*",
+    "https://glassdoor.com/*",
+    "https://indeed.com/*",
+    "https://jobs.xing.com/*",
+    "https://jobstreet.com/*",
+    "https://linkedin.com/*",
+    "https://monster.com/*",
+    "https://seek.com.au/*",
+    "https://wellfound.com/*",
+    "https://www.cv-library.co.uk/*",
+    "https://www.cwjobs.co.uk/*",
+    "https://www.dice.com/*",
+    "https://www.eurojobs.com/*",
+    "https://www.glassdoor.co.uk/*",
+    "https://www.glassdoor.com/*",
+    "https://www.indeed.com/*",
+    "https://www.jobsite.co.uk/*",
+    "https://www.jobstreet.com/*",
+    "https://www.linkedin.com/*",
+    "https://www.monster.com/*",
+    "https://www.reed.co.uk/*",
+    "https://www.seek.co.uk/*",
+    "https://www.seek.com.au/*",
+    "https://www.seek.com/*",
+    "https://www.stepstone.co.uk/*",
+    "https://www.stepstone.de/*",
+    "https://www.totaljobs.com/*",
+    "https://www.wellfound.com/*",
+    "https://www.xing.com/*",
+    "https://www.ziprecruiter.com/*",
+    "https://ziprecruiter.com/*"
+  ],
+  "action": {
+    "default_title": "Resume Match Scout",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://dice.com/*",
+        "https://eures.europa.eu/*",
+        "https://glassdoor.com/*",
+        "https://indeed.com/*",
+        "https://jobs.xing.com/*",
+        "https://jobstreet.com/*",
+        "https://linkedin.com/*",
+        "https://monster.com/*",
+        "https://seek.com.au/*",
+        "https://wellfound.com/*",
+        "https://www.cv-library.co.uk/*",
+        "https://www.cwjobs.co.uk/*",
+        "https://www.dice.com/*",
+        "https://www.eurojobs.com/*",
+        "https://www.glassdoor.co.uk/*",
+        "https://www.glassdoor.com/*",
+        "https://www.indeed.com/*",
+        "https://www.jobsite.co.uk/*",
+        "https://www.jobstreet.com/*",
+        "https://www.linkedin.com/*",
+        "https://www.monster.com/*",
+        "https://www.reed.co.uk/*",
+        "https://www.seek.co.uk/*",
+        "https://www.seek.com.au/*",
+        "https://www.seek.com/*",
+        "https://www.stepstone.co.uk/*",
+        "https://www.stepstone.de/*",
+        "https://www.totaljobs.com/*",
+        "https://www.wellfound.com/*",
+        "https://www.xing.com/*",
+        "https://www.ziprecruiter.com/*",
+        "https://ziprecruiter.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

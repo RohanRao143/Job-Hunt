@@ -1,0 +1,12 @@
+{
+  "name": "resume-match-scout",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Local-first resume matching Chrome extension",
+  "scripts": {
+    "prepare-extension": "node scripts/prepare-pdfjs.mjs"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.3.289"
+  }
+}

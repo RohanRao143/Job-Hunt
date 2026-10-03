@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Resume Match Scout — Settings</title><link rel="stylesheet" href="options.css"></head>
+<body>
+<main>
+  <h1>Resume Match Scout</h1>
+  <p class="lead">Everything is processed locally. Select the folder that contains your resume PDFs.</p>
+
+  <section class="card">
+    <h2>Resume directory</h2>
+    <div class="dir"><span id="dirStatus">No folder configured</span><button id="pickDir">Choose folder</button></div>
+    <p class="small">The extension reads PDFs in this folder and its subfolders when a job is scanned. Your resume files are not uploaded.</p>
+  </section>
+
+  <section class="card">
+    <h2>Job boards</h2>
+    <div id="sites"></div>
+    <p class="small">The selected board controls the site adapter used to identify the job title and description. The fallback extractor still uses visible page text.</p>
+  </section>
+
+  <section class="card">
+    <h2>Scoring</h2>
+    <label>Minimum score to consider a resume a likely match
+      <input id="minScore" type="number" min="0" max="100" step="1">
+    </label>
+    <p class="small">This threshold only affects highlighting in the future; all scores are still shown.</p>
+  </section>
+
+  <section class="card">
+    <h2>Custom skills</h2>
+    <textarea id="customSkills" rows="8" placeholder="One skill per line, e.g.&#10;NestJS&#10;RabbitMQ&#10;Redux Saga"></textarea>
+    <p class="small">Add skills you use that are not in the built-in dictionary.</p>
+  </section>
+
+  <button id="save" class="primary">Save settings</button>
+  <span id="saved"></span>
+</main>
+<script src="options.js"></script>
+</body>
+</html>
