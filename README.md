@@ -1,3 +1,95 @@
+# Job Hunt — Resume Relevance Analyzer
+
+Job Hunt is a browser extension that helps applicants identify which of their existing resumes is most relevant to a job listing. It extracts job-related skills from the currently open page, scans a user-selected local directory of PDF resumes, and ranks the resumes using a transparent skill-overlap score.
+
+The goal is to help applicants choose a suitable resume before applying—not to claim that a score guarantees an interview or hiring outcome.
+
+## Key features
+
+- **Job-page extraction:** Reads relevant job text from the active job listing page, including supported job boards.
+- **Local resume library:** Lets the user select a directory of PDF resumes for scanning.
+- **Resume ranking:** Compares extracted job requirements with skills found in each resume and displays relevance scores.
+- **Skill normalization:** Maps common aliases and related terminology to canonical skill names to improve matching.
+- **Actionable results:** Shows the job title, detected skills, and per-resume scores so applicants can compare options.
+- **Copyable skill list:** Makes it easier to reuse extracted skills when tailoring an application.
+- **Privacy-conscious workflow:** Resume processing is designed to happen locally in the browser; resume files are not intentionally uploaded to a remote service.
+
+## How it works
+
+1. Open a supported job listing in Chrome or a compatible Chromium browser.
+2. Run the extension to extract the job title, description, skills, and relevant requirements.
+3. Select the local directory containing your resume PDFs when prompted.
+4. The extension parses the PDFs and normalizes the skills it detects.
+5. A deterministic matching process compares job skills with resume skills.
+6. Review the ranked resumes and choose the version that best represents your experience.
+
+## Matching approach
+
+The current approach is based on normalized skill overlap rather than a claim of deep semantic understanding. In broad terms:
+
+- Extract candidate skills from the job listing and resume text.
+- Normalize aliases to canonical skill names.
+- Compare the job skill set with each resume's skill set.
+- Calculate and display a relevance score for each resume.
+
+A high score means stronger overlap under the configured matching rules. It does not independently verify years of experience, proficiency, project impact, or the truth of a resume claim.
+
+## Technology
+
+- Chrome Extensions API / Manifest V3
+- JavaScript
+- Content scripts and extension background/service-worker components
+- File System Access API for user-selected local directories
+- PDF.js for PDF text extraction
+- Skill taxonomy and alias normalization
+- Deterministic relevance scoring
+
+## Setup
+
+The project build uses npm.
+
+```bash
+npm install
+npm run prepare-extension
+```
+
+After the build, load the generated `resume-match-extension` directory as an unpacked extension:
+
+1. Open `chrome://extensions`.
+2. Enable **Developer mode**.
+3. Choose **Load unpacked**.
+4. Select the generated `resume-match-extension` directory.
+5. Open a supported job listing and run the extension.
+
+If your local checkout uses different scripts or output paths, use the commands and directory names defined in its `package.json` and build configuration.
+
+## Privacy and permissions
+
+The extension needs access to the active job page and user-selected resume files to perform its work. Review the manifest and browser permission prompts before use. Only select directories that you intend to scan. Avoid running it on untrusted pages, and verify the final resume yourself before submitting an application.
+
+## Current limitations
+
+- Results depend on the text that can be extracted from the job page and PDF.
+- Scanned/image-only PDFs may require OCR, which is not guaranteed by basic PDF text extraction.
+- Skill overlap may miss synonyms or context not represented in the taxonomy.
+- A relevance score is a decision aid, not an ATS score or a hiring prediction.
+- Website layout changes may require updates to job-page extraction logic.
+
+## Potential improvements
+
+- Add a configurable weighted score for required versus preferred skills.
+- Explain score contributions and show matched and missing skills.
+- Add support for more job boards and document formats.
+- Improve synonym coverage and evaluate matching quality against labeled examples.
+- Add optional experience, role, and responsibility matching.
+- Provide a clear export or report of the comparison.
+
+## Project status
+
+Use this README as a project overview; confirm supported websites, permissions, and build commands against the current source before publishing.
+
+
+
 # Resume Match Scout
 
 A local-first Chrome/Chromium extension that:
